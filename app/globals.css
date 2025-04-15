@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@plugin "tailwindcss-animate"
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -102,6 +104,8 @@
 }
 
 .neon-button {
+  @apply animate-in fade-in-5 duration-1000;
+
   position: relative;
   border-left: 2px solid rgba(255, 255, 255, 0.1);
   border-right: 2px solid rgba(255, 255, 255, 0.1);
