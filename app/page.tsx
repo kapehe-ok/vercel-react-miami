@@ -27,7 +27,7 @@ export default function LandingPage() {
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           <Link
-            href="https://vercel.com/careers?department=Engineering"
+            href="https://vercel.com/careers?function=Engineering"
             target="_blank"
             rel="noopener noreferrer"
             className="neon-button p-6 flex items-center justify-center transition-all h-20"
