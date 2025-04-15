@@ -69,138 +69,84 @@
 .neon-text {
   position: relative;
   animation: neon-color-change 10s infinite alternate;
-  text-shadow: 0 0 4px currentColor, 0 0 12px currentColor, 0 0 16px currentColor;
+  text-shadow: 0 0 4px currentColor, 0 0 12px currentColor,
+    0 0 16px currentColor;
 }
 
-.neon-text-grid {
+@keyframes neon-color-change {
+  0% {
+    color: rgba(255, 113, 206, 1); /* Pink */
+    text-shadow: 0 0 4px rgba(255, 113, 206, 0.8),
+      0 0 12px rgba(255, 113, 206, 0.5), 0 0 16px rgba(255, 113, 206, 0.3);
+  }
+  25% {
+    color: rgba(1, 205, 254, 1); /* Cyan */
+    text-shadow: 0 0 4px rgba(1, 205, 254, 0.8), 0 0 12px rgba(1, 205, 254, 0.5),
+      0 0 16px rgba(1, 205, 254, 0.3);
+  }
+  50% {
+    color: rgba(5, 255, 161, 1); /* Green */
+    text-shadow: 0 0 4px rgba(5, 255, 161, 0.8), 0 0 12px rgba(5, 255, 161, 0.5),
+      0 0 16px rgba(5, 255, 161, 0.3);
+  }
+  75% {
+    color: rgba(185, 103, 255, 1); /* Purple */
+    text-shadow: 0 0 4px rgba(185, 103, 255, 0.8),
+      0 0 12px rgba(185, 103, 255, 0.5), 0 0 16px rgba(185, 103, 255, 0.3);
+  }
+  100% {
+    color: rgba(255, 251, 150, 1); /* Yellow */
+    text-shadow: 0 0 4px rgba(255, 251, 150, 0.8),
+      0 0 12px rgba(255, 251, 150, 0.5), 0 0 16px rgba(255, 251, 150, 0.3);
+  }
+}
+
+.neon-button {
   position: relative;
-}
-
-.neon-text-grid::before {
-  content: "";
-  position: absolute;
-  top: -16px;
-  left: -16px;
-  right: -16px;
-  bottom: -16px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 113, 206, 0.1) 0%,
-    rgba(1, 205, 254, 0.1) 50%,
-    rgba(5, 255, 161, 0.1) 100%
-  );
-  background-size: 100% 8px;
-  opacity: 0.3;
-  z-index: -1;
-  transform: perspective(400px) rotateX(30deg);
-  pointer-events: none;
-}
-
-/* Header background */
-.header-background {
-  position: relative;
-  padding: 1.6rem;
-  border-radius: 6px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 40, 0.7) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
   overflow: hidden;
+  border-radius: 5px;
 }
 
-.header-background::before {
+.neon-button::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, rgba(255, 113, 206, 0.05) 1px, transparent 1px),
+  background: linear-gradient(
+      90deg,
+      rgba(255, 113, 206, 0.05) 1px,
+      transparent 1px
+    ),
     linear-gradient(0deg, rgba(1, 205, 254, 0.05) 1px, transparent 1px);
   background-size: 16px 16px;
   z-index: -1;
 }
 
-.header-background::after {
+.neon-button::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 113, 206, 0.5), rgba(1, 205, 254, 0.5), transparent);
-}
-
-@keyframes neon-color-change {
-  0% {
-    color: rgba(255, 113, 206, 1); /* Pink */
-    text-shadow: 0 0 4px rgba(255, 113, 206, 0.8), 0 0 12px rgba(255, 113, 206, 0.5), 0 0 16px rgba(255, 113, 206, 0.3);
-  }
-  25% {
-    color: rgba(1, 205, 254, 1); /* Cyan */
-    text-shadow: 0 0 4px rgba(1, 205, 254, 0.8), 0 0 12px rgba(1, 205, 254, 0.5), 0 0 16px rgba(1, 205, 254, 0.3);
-  }
-  50% {
-    color: rgba(5, 255, 161, 1); /* Green */
-    text-shadow: 0 0 4px rgba(5, 255, 161, 0.8), 0 0 12px rgba(5, 255, 161, 0.5), 0 0 16px rgba(5, 255, 161, 0.3);
-  }
-  75% {
-    color: rgba(185, 103, 255, 1); /* Purple */
-    text-shadow: 0 0 4px rgba(185, 103, 255, 0.8), 0 0 12px rgba(185, 103, 255, 0.5), 0 0 16px rgba(185, 103, 255, 0.3);
-  }
-  100% {
-    color: rgba(255, 251, 150, 1); /* Yellow */
-    text-shadow: 0 0 4px rgba(255, 251, 150, 0.8), 0 0 12px rgba(255, 251, 150, 0.5), 0 0 16px rgba(255, 251, 150, 0.3);
-  }
-}
-
-/* Neon button text and border effect - with visible border */
-.neon-button {
-  position: relative;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.neon-button:hover {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 113, 206, 0.5),
+    rgba(1, 205, 254, 0.5),
+    transparent
+  );
 }
 
 .neon-button:hover .button-text {
   animation: neon-text-color-change 3s infinite alternate;
   text-shadow: 0 0 1px currentColor;
-}
-
-.neon-button::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid transparent;
-  background: black;
-  background-clip: padding-box;
-  z-index: -1;
-}
-
-.neon-button::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  z-index: -2;
-  background: linear-gradient(
-    45deg,
-    rgba(255, 113, 206, 0.8) /* Pink */,
-    rgba(1, 205, 254, 0.8) /* Cyan */,
-    rgba(5, 255, 161, 0.8) /* Green */,
-    rgba(185, 103, 255, 0.8) /* Purple */,
-    rgba(255, 251, 150, 0.8) /* Yellow */
-  );
-  background-size: 400% 400%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.neon-button:hover::before {
-  opacity: 1;
-  animation: rainbow-border 3s ease infinite;
 }
 
 @keyframes neon-text-color-change {
@@ -236,16 +182,4 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-/* Sun effect */
-.sun-effect {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(to right, #ff71ce, #ff9e80);
-  border-radius: 50%;
-  filter: blur(30px);
-  opacity: 0.2;
-  z-index: -1;
 }
