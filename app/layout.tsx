@@ -1,6 +1,8 @@
 import type React from "react"
 import "@/app/globals.css"
 import { GeistMono } from "geist/font/mono"
+import { Analytics } from '@vercel/analytics/next';
+
 
 export const metadata = {
   title: "Vercel @ React Miami",
@@ -14,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistMono.className}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
