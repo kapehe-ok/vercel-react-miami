@@ -2,26 +2,250 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 328 73% 59%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 328 73% 59%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 328 73% 59%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 328 73% 59%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+  }
+}
+
+/* Enhanced neon text effect */
+.neon-text {
+  position: relative;
+  animation: neon-color-change 10s infinite alternate;
+  text-shadow: 0 0 4px currentColor, 0 0 12px currentColor, 0 0 16px currentColor;
+}
+
+.neon-text-grid {
+  position: relative;
+}
+
+.neon-text-grid::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 113, 206, 0.1) 0%,
+    rgba(1, 205, 254, 0.1) 50%,
+    rgba(5, 255, 161, 0.1) 100%
+  );
+  background-size: 100% 8px;
+  opacity: 0.3;
+  z-index: -1;
+  transform: perspective(400px) rotateX(30deg);
+  pointer-events: none;
+}
+
+/* Header background */
+.header-background {
+  position: relative;
+  padding: 1.6rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 40, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.header-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255, 113, 206, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(1, 205, 254, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  z-index: -1;
+}
+
+.header-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 113, 206, 0.5), rgba(1, 205, 254, 0.5), transparent);
+}
+
+@keyframes neon-color-change {
+  0% {
+    color: rgba(255, 113, 206, 1); /* Pink */
+    text-shadow: 0 0 4px rgba(255, 113, 206, 0.8), 0 0 12px rgba(255, 113, 206, 0.5), 0 0 16px rgba(255, 113, 206, 0.3);
+  }
+  25% {
+    color: rgba(1, 205, 254, 1); /* Cyan */
+    text-shadow: 0 0 4px rgba(1, 205, 254, 0.8), 0 0 12px rgba(1, 205, 254, 0.5), 0 0 16px rgba(1, 205, 254, 0.3);
+  }
+  50% {
+    color: rgba(5, 255, 161, 1); /* Green */
+    text-shadow: 0 0 4px rgba(5, 255, 161, 0.8), 0 0 12px rgba(5, 255, 161, 0.5), 0 0 16px rgba(5, 255, 161, 0.3);
+  }
+  75% {
+    color: rgba(185, 103, 255, 1); /* Purple */
+    text-shadow: 0 0 4px rgba(185, 103, 255, 0.8), 0 0 12px rgba(185, 103, 255, 0.5), 0 0 16px rgba(185, 103, 255, 0.3);
+  }
+  100% {
+    color: rgba(255, 251, 150, 1); /* Yellow */
+    text-shadow: 0 0 4px rgba(255, 251, 150, 0.8), 0 0 12px rgba(255, 251, 150, 0.5), 0 0 16px rgba(255, 251, 150, 0.3);
+  }
+}
+
+/* Neon button text and border effect - with visible border */
+.neon-button {
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.neon-button:hover .button-text {
+  animation: neon-text-color-change 3s infinite alternate;
+  text-shadow: 0 0 1px currentColor;
+}
+
+.neon-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  background: black;
+  background-clip: padding-box;
+  z-index: -1;
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -2;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 113, 206, 0.8) /* Pink */,
+    rgba(1, 205, 254, 0.8) /* Cyan */,
+    rgba(5, 255, 161, 0.8) /* Green */,
+    rgba(185, 103, 255, 0.8) /* Purple */,
+    rgba(255, 251, 150, 0.8) /* Yellow */
+  );
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.neon-button:hover::before {
+  opacity: 1;
+  animation: rainbow-border 3s ease infinite;
+}
+
+@keyframes neon-text-color-change {
+  0% {
+    color: rgba(255, 113, 206, 0.9); /* Pink */
+    text-shadow: 0 0 1px rgba(255, 113, 206, 0.3);
+  }
+  25% {
+    color: rgba(1, 205, 254, 0.9); /* Cyan */
+    text-shadow: 0 0 1px rgba(1, 205, 254, 0.3);
+  }
+  50% {
+    color: rgba(5, 255, 161, 0.9); /* Green */
+    text-shadow: 0 0 1px rgba(5, 255, 161, 0.3);
+  }
+  75% {
+    color: rgba(185, 103, 255, 0.9); /* Purple */
+    text-shadow: 0 0 1px rgba(185, 103, 255, 0.3);
+  }
+  100% {
+    color: rgba(255, 251, 150, 0.9); /* Yellow */
+    text-shadow: 0 0 1px rgba(255, 251, 150, 0.3);
+  }
+}
+
+@keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Sun effect */
+.sun-effect {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to right, #ff71ce, #ff9e80);
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.2;
+  z-index: -1;
 }
