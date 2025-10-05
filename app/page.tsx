@@ -21,7 +21,7 @@ export default function LandingPage() {
           />
           <span className="text-xl text-gray-600 font-mono">@</span>
           <span className={cn(yellowtail.className, "text-3xl neon-text")}>
-            React Miami
+            React Conf
           </span>
         </div>
 

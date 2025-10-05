@@ -5,8 +5,8 @@ import { Analytics } from '@vercel/analytics/next';
 
 
 export const metadata = {
-  title: "Vercel @ React Miami",
-  description: "Connect with Vercel at React Miami and explore opportunities to join our community.",
+  title: "Vercel @ React Conf",
+  description: "Connect with Vercel at React Conf and explore opportunities to join our community.",
 }
 
 export default function RootLayout({
